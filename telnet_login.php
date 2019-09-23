@@ -7,16 +7,19 @@
         $connection = ssh2_connect($_SESSION['ip'], 22);
         if (ssh2_auth_password($connection, $user, $pass)) {
 
+            $_SESSION['user'] = $user;
+            $_SESSION['pass'] = $pass;
+            
             echo "<script>
-            if(confirm('Authentication Successful!')){
-                location.replace('index.php');
-            }
+                    if(confirm('Authentication Successful!')){
+                        location.replace('index.php');
+                    }
                 </script>";
             } else {
             echo "<script>
-            if(confirm('Authentication Unsuccessful!')){
-                
-            }
+                    if(confirm('Authentication Unsuccessful!')){
+                        
+                    }
                 </script>";
             }
     }
